@@ -20,3 +20,14 @@ def hitung():
         max_iter = int(max_iter_str)
 
         # Bersihkan tabel sebelumnya
+         for row in tree.get_children():
+            tree.delete(row)
+
+        # Proses Metode Iterasi Titik Tetap (x_baru = g(x))
+        x_sekarang = x0
+        riwayat_x = [x0]
+
+        for i in range(1, max_iter + 1):
+            x_baru = eval(g_str, {"x": x_sekarang, "math": math, "sqrt": math.sqrt, "sin": math.sin, "cos": math.cos, "exp": math.exp})
+            error = abs(x_baru - x_sekarang)
+            
