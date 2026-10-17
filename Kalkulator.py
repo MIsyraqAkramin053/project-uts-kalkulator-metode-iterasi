@@ -31,3 +31,13 @@ def hitung():
             x_baru = eval(g_str, {"x": x_sekarang, "math": math, "sqrt": math.sqrt, "sin": math.sin, "cos": math.cos, "exp": math.exp})
             error = abs(x_baru - x_sekarang)
             
+            tag = 'even' if i % 2 == 0 else 'odd'
+            tree.insert("", "end", values=(i, f"{x_sekarang:.6f}", f"{x_baru:.6f}", f"{error:.6e}"), tags=(tag,))
+            riwayat_x.append(x_baru)
+            
+            if error < tol:
+                lbl_status.config(text=f"✨ Sukses! Akar ditemukan: {x_baru:.6f} (Iterasi ke-{i})", fg="#047857")
+                buat_grafik(g_str, riwayat_x, x_baru)
+                return
+            
+            x_sekarang = x_baru
