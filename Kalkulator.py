@@ -41,3 +41,15 @@ def hitung():
                 return
             
             x_sekarang = x_baru
+
+        lbl_status.config(text=f"⚠️ Maksimum iterasi tercapai. Akar terakhir: {x_sekarang:.6f}", fg="#b45309")
+        buat_grafik(g_str, riwayat_x, x_sekarang)
+
+    except Exception as e:
+        messagebox.showerror("Error", f"Terjadi kesalahan input atau rumus:\n{e}")
+
+def reset_form():
+    combo_g.set("")
+    entry_x0.delete(0, tk.END)
+    entry_tol.delete(0, tk.END)
+    entry_iter.delete(0, tk.END)
